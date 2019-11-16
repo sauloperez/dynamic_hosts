@@ -14,13 +14,17 @@ ok: [localhost] => {
     "groups": {
         "all": [
             "192.168.0.1",
+            "192.168.0.2",
             "localhost"
         ],
-        "dynamic_hosts": [
+        "appservers": [
+            "192.168.0.2"
+        ],
+        "control": [
+            "localhost"
+        ],
+        "databases": [
             "192.168.0.1"
-        ],
-        "site": [
-            "localhost"
         ],
         "ungrouped": []
     }

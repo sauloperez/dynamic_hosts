@@ -1,10 +1,13 @@
 ---
-- hosts: site
+- hosts: control:databases
   tasks:
-    - name: Add host to group 'site' with variable foo=42
+    - name: Add host to group 'databases' with variable replica=false
       add_host:
-        name: 192.168.0.1
-        groups: dynamic_hosts
-        foo: 42
+        name: "{{ item.ip }}"
+        groups: "{{ item.labels }}"
+        replica: false
+      loop:
+        - { ip: '192.168.0.1', labels: 'databases' }
+        - { ip: '192.168.0.2', labels: 'appservers' }
     - debug:
         var: groups
