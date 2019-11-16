@@ -1,0 +1,10 @@
+---
+- hosts: site
+  tasks:
+    - name: Add host to group 'site' with variable foo=42
+      add_host:
+        name: 192.168.0.1
+        groups: dynamic_hosts
+        foo: 42
+    - debug:
+        var: groups
